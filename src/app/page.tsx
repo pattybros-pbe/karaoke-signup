@@ -1,6 +1,7 @@
 'use client';
 
 import * as React from 'react';
+import { Suspense } from 'react';
 import Image from 'next/image';
 import { useSearchParams } from 'next/navigation';
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -39,7 +40,7 @@ const formSchema = z.object({
   path: ["contactNumber"],
 });
 
-export default function SingerPage() {
+function SingerPageContent() {
   const searchParams = useSearchParams();
   const firestore = useFirestore();
   const [isSubmitting, setIsSubmitting] = React.useState(false);
@@ -377,5 +378,13 @@ export default function SingerPage() {
         </Form>
       </main>
     </div>
+  );
+}
+
+export default function SingerPage() {
+  return (
+    <Suspense fallback={<div className="flex h-screen items-center justify-center">Loading...</div>}>
+      <SingerPageContent />
+    </Suspense>
   );
 }
