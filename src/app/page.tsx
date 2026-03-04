@@ -155,7 +155,7 @@ function SingerPageContent() {
 
   return (
     <div className="min-h-screen bg-background relative">
-      <header className="bg-black text-white px-4 py-6 sm:px-6 sm:py-12 border-b-4 border-accent relative flex flex-col items-center justify-center text-center">
+      <header className="bg-black text-white px-4 py-4 border-b-4 border-accent relative flex flex-col items-center justify-center text-center">
         <div className="absolute top-4 right-4">
           <ThemeToggle />
         </div>
@@ -163,7 +163,7 @@ function SingerPageContent() {
         <div className="flex flex-col items-center max-w-2xl w-full">
           <div className="flex items-center gap-4 justify-center">
             {logo && (
-              <div className="relative h-14 w-14 sm:h-20 sm:w-20 shrink-0">
+              <div className="relative h-[72px] w-[72px] shrink-0">
                 <Image 
                   src={logo.imageUrl} 
                   alt="App Logo" 
@@ -175,8 +175,8 @@ function SingerPageContent() {
             )}
             
             <div className="flex flex-col items-start text-left">
-              <h1 className="text-3xl sm:text-5xl font-black font-headline uppercase leading-tight tracking-tighter text-white">KARAOKE</h1>
-              <h1 className="text-lg sm:text-2xl font-black font-headline uppercase leading-tight tracking-tighter text-accent mt-0.5">
+              <h1 className="text-3xl font-black font-headline uppercase leading-none tracking-tight text-white">KARAOKE</h1>
+              <h1 className="text-lg font-black font-headline uppercase leading-none tracking-tight text-accent -mt-1">
                 SIGN-UP&nbsp;&nbsp;FORM
               </h1>
             </div>
