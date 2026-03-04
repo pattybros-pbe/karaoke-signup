@@ -235,34 +235,56 @@ export default function HostDashboard() {
 
         <div className="flex flex-col gap-6">
           <div className="flex items-center justify-end bg-card p-4 rounded-xl border shadow-sm min-h-[72px]">
-            <div className="flex items-center gap-2">
-              {selectedIds.length > 0 && (
-                <div className="flex items-center gap-3 animate-in fade-in slide-in-from-right-2">
-                  <span className="text-xs font-bold text-muted-foreground uppercase pr-2">{selectedIds.length} Selected:</span>
-                  <Button 
-                    size="sm" 
-                    className="h-9 bg-accent hover:bg-accent/80 text-accent-foreground font-black uppercase tracking-tight px-6 border-b-2 border-black/20" 
-                    onClick={() => handleStatusChange(selectedIds, 'Added to Queue')}
-                  >
-                    Queue
-                  </Button>
-                  <Button 
-                    size="sm" 
-                    className="h-9 bg-green-600 hover:bg-green-700 text-white font-black uppercase tracking-tight px-6 border-b-2 border-black/20" 
-                    onClick={() => handleStatusChange(selectedIds, 'Performed')}
-                  >
-                    Done
-                  </Button>
-                  <Button 
-                    size="sm" 
-                    className="h-9 bg-red-600 hover:bg-red-700 text-white font-black uppercase tracking-tight px-6 border-b-2 border-black/20" 
-                    onClick={() => handleBulkDelete(selectedIds)}
-                  >
-                    Clear
-                  </Button>
-                </div>
-              )}
-            </div>
+            <div className="flex items-center gap-3">
+  <span className="text-xs font-bold text-muted-foreground uppercase pr-2">
+    {selectedIds.length > 0 ? `${selectedIds.length} Selected:` : 'No Selection'}
+  </span>
+
+  {/* QUEUE */}
+  <Button
+    size="sm"
+    disabled={selectedIds.length === 0}
+    onClick={() => handleStatusChange(selectedIds, 'Added to Queue')}
+    className={cn(
+      "h-9 font-black uppercase tracking-tight px-6 border-2 transition-all",
+      selectedIds.length > 0
+        ? "bg-accent text-accent-foreground border-accent"
+        : "bg-transparent text-accent border-accent hover:bg-accent/10"
+    )}
+  >
+    Queue
+  </Button>
+
+  {/* DONE */}
+  <Button
+    size="sm"
+    disabled={selectedIds.length === 0}
+    onClick={() => handleStatusChange(selectedIds, 'Performed')}
+    className={cn(
+      "h-9 font-black uppercase tracking-tight px-6 border-2 transition-all",
+      selectedIds.length > 0
+        ? "bg-green-600 text-white border-green-600"
+        : "bg-transparent text-green-600 border-green-600 hover:bg-green-600/10"
+    )}
+  >
+    Done
+  </Button>
+
+  {/* CLEAR */}
+  <Button
+    size="sm"
+    disabled={selectedIds.length === 0}
+    onClick={() => handleBulkDelete(selectedIds)}
+    className={cn(
+      "h-9 font-black uppercase tracking-tight px-6 border-2 transition-all",
+      selectedIds.length > 0
+        ? "bg-red-600 text-white border-red-600"
+        : "bg-transparent text-red-600 border-red-600 hover:bg-red-600/10"
+    )}
+  >
+    Clear
+  </Button>
+</div>
           </div>
 
           <div className="bg-card rounded-xl border shadow-sm overflow-hidden">
