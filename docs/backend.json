@@ -1,0 +1,113 @@
+
+{
+  "entities": {
+    "SongRequest": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "title": "SongRequest",
+      "type": "object",
+      "description": "Represents a single song request submitted by a singer in the karaoke system.",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier for the SongRequest entity."
+        },
+        "singerName": {
+          "type": "string",
+          "description": "The name provided by the singer for their request."
+        },
+        "songTitle": {
+          "type": "string",
+          "description": "The title of the song requested by the singer."
+        },
+        "artistName": {
+          "type": "string",
+          "description": "The name of the artist for the requested song."
+        },
+        "notes": {
+          "type": "string",
+          "description": "Optional additional notes or special requests from the singer."
+        },
+        "keyAdjustment": {
+          "type": "number",
+          "description": "Optional key adjustment for the song."
+        },
+        "tempoAdjustment": {
+          "type": "number",
+          "description": "Optional tempo adjustment for the song."
+        },
+        "contactNumber": {
+          "type": "string",
+          "description": "The singer's phone number, if provided."
+        },
+        "submittedAt": {
+          "type": "string",
+          "description": "Timestamp indicating when the song request was submitted.",
+          "format": "date-time"
+        },
+        "status": {
+          "type": "string",
+          "description": "The current processing status of the song request."
+        }
+      },
+      "required": [
+        "singerName",
+        "songTitle",
+        "artistName",
+        "status"
+      ]
+    },
+    "HostConfiguration": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "title": "HostConfiguration",
+      "type": "object",
+      "description": "Stores global configuration settings managed by the host.",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier for the HostConfiguration entity."
+        },
+        "submissionsOpen": {
+          "type": "boolean",
+          "description": "A boolean flag indicating whether the system is currently accepting new song requests."
+        },
+        "logoUrl": {
+          "type": "string",
+          "description": "URL for the host's branding logo.",
+          "format": "uri"
+        }
+      },
+      "required": [
+        "id",
+        "submissionsOpen"
+      ]
+    }
+  },
+  "auth": {
+    "providers": [
+      "password",
+      "anonymous"
+    ]
+  },
+  "firestore": {
+    "structure": [
+      {
+        "path": "/hostConfiguration/karaokeConfig",
+        "definition": {
+          "schema": {
+            "$ref": "#/backend/entities/HostConfiguration"
+          },
+          "description": "Global application settings."
+        }
+      },
+      {
+        "path": "/songRequests/{songRequestId}",
+        "definition": {
+          "schema": {
+            "$ref": "#/backend/entities/SongRequest"
+          },
+          "description": "Collection of all submitted song requests."
+        }
+      }
+    ]
+  }
+}

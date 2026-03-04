@@ -1,0 +1,48 @@
+
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // --- Helper Functions ---
+
+    function isSignedIn() {
+      return request.auth != null;
+    }
+
+    /** 
+     * Enforce that the system must be initialized and open for submissions.
+     */
+    function isSubmissionsOpen() {
+      let path = /databases/$(database)/documents/hostConfiguration/karaokeConfig;
+      // We explicitly require the document to exist AND submissionsOpen to be true.
+      // This prevents submissions if the host hasn't finished setup.
+      return exists(path) && get(path).data.submissionsOpen == true;
+    }
+
+    // --- Collection Rules ---
+
+    match /hostConfiguration/karaokeConfig {
+      // Allow public read for settings (logo, open status)
+      allow get, list: if true;
+      // Allow anyone to create/update for the prototype to unblock host setup
+      allow create, update: if true;
+      allow delete: if false;
+    }
+
+    match /catalogSongs/{catalogSongId} {
+      allow get, list: if true;
+      allow create, update, delete: if true;
+    }
+
+    match /songRequests/{songRequestId} {
+      // Allow public list/get for host dashboard prototype
+      allow get, list: if true;
+      
+      // Allow creation ONLY if submissions are open
+      allow create: if isSubmissionsOpen();
+      
+      // Allow updates/deletes for host dashboard management
+      allow update, delete: if true;
+    }
+  }
+}
