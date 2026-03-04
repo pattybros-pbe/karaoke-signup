@@ -137,15 +137,18 @@ function SingerPageContent() {
 
   if (submitted) {
     return (
-      <div className="flex min-h-screen flex-col items-center justify-center p-4 sm:p-6 bg-background text-center animate-in fade-in zoom-in duration-300">
-        <CheckCircle2 className="h-14 w-14 sm:h-20 sm:w-20 text-accent mb-4 sm:mb-6" />
-        <h1 className="text-2xl sm:text-3xl font-bold mb-3 sm:mb-4 font-headline uppercase">Request Received!</h1>
-        <p className="text-lg text-muted-foreground mb-8">
+      <div className="flex min-h-[100svh] flex-col items-center justify-center px-4 py-6 bg-background text-center animate-in fade-in zoom-in duration-300">
+        <CheckCircle2 className="h-12 w-12 sm:h-20 sm:w-20 text-accent mb-3 sm:mb-6" />
+        <h1 className="text-xl sm:text-3xl font-bold mb-2 sm:mb-4 font-headline uppercase">Request Received!</h1>
+        <p className="text-base sm:text-lg text-muted-foreground mb-5 sm:mb-8">
           Thank you for your submission. Get ready to rock the stage!
         </p>
-        <Button onClick={handleResetForm} className="w-full max-w-xs h-12 bg-accent hover:bg-accent/80 text-accent-foreground font-bold uppercase tracking-widest">
-          Submit Another Song
-        </Button>
+        <Button 
+  onClick={handleResetForm} 
+  className="w-full max-w-xs h-11 sm:h-12 bg-accent hover:bg-accent/80 text-accent-foreground font-bold uppercase tracking-widest"
+>
+  Submit Another Song
+</Button>
       </div>
     );
   }
@@ -181,11 +184,11 @@ function SingerPageContent() {
         </div>
       </header>
 
-      <main className="mx-auto max-w-lg px-4 sm:px-6 py-8">
+      <main className="mx-auto max-w-lg px-4 sm:px-6 py-5 sm:py-8">
         <Form {...form}>
           <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
             
-            <div className="space-y-4">
+            <div className="space-y-3 sm:space-y-4">
               <h2 className="text-xl font-black uppercase tracking-tight border-l-4 border-accent pl-3">Song Details</h2>
               <div className="grid grid-cols-2 gap-4">
                 <FormField
@@ -243,7 +246,7 @@ function SingerPageContent() {
               </div>
             </div>
 
-            <div className="space-y-4 pt-4 border-t-2 border-dashed">
+            <div className="space-y-3 pt-3 sm:space-y-4 sm:pt-4 border-t-2 border-dashed">
               <h2 className="text-xl font-black uppercase tracking-tight border-l-4 border-accent pl-3">Adjustments</h2>
               <div className="grid grid-cols-2 gap-6">
                 <FormField
@@ -321,7 +324,7 @@ function SingerPageContent() {
               </div>
             </div>
 
-            <div className="space-y-4 pt-4 border-t-2 border-dashed">
+            <div className="space-y-3 pt-3 sm:space-y-4 sm:pt-4 border-t-2 border-dashed">
               <FormField
                 control={form.control}
                 name="contactSinger"
@@ -363,10 +366,10 @@ function SingerPageContent() {
               )}
 
               <Button 
-                type="submit" 
-                className="w-full h-14 bg-black hover:bg-black/90 text-white text-lg font-black uppercase tracking-widest shadow-xl border-b-4 border-accent active:translate-y-1 active:border-b-0 transition-all mt-4"
-                disabled={isSubmitting}
-              >
+  type="submit" 
+  className="w-full h-12 sm:h-14 bg-black hover:bg-black/90 text-white text-lg font-black uppercase tracking-widest shadow-xl border-b-4 border-accent active:translate-y-1 active:border-b-0 transition-all mt-4"
+  disabled={isSubmitting}
+>
                 {isSubmitting ? (
                   <span className="flex items-center gap-2">
                     <Loader2 className="h-5 w-5 animate-spin" /> Submitting...
