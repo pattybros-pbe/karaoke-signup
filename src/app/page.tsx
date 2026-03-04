@@ -252,7 +252,7 @@ function SingerPageContent() {
         type="button"
         className="w-full h-10 font-bold uppercase tracking-tight text-sm bg-accent hover:bg-accent/80 text-accent-foreground px-2"
       >
-        VIEW SONG CATALOG ↗
+        VIEW SONG CATALOG
       </Button>
     </AlertDialogTrigger>
 
