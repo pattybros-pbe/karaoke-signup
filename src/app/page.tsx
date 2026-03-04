@@ -11,6 +11,18 @@ import { CheckCircle2, AlertCircle, Loader2 } from 'lucide-react';
 import Link from 'next/link';
 
 import { Button } from '@/components/ui/button';
+
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+  AlertDialogTrigger,
+} from "@/components/ui/alert-dialog";
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
@@ -234,15 +246,44 @@ function SingerPageContent() {
                 />
 
                 <div className="flex flex-col justify-end">
-                  <Link href="https://www.karafun.com/karaoke/playlist/" target="_blank" className="w-full">
-                    <Button 
-                      type="button"
-                      className="w-full h-10 font-bold uppercase tracking-tight text-sm bg-accent hover:bg-accent/80 text-accent-foreground px-2"
-                    >
-                      VIEW SONG CATALOG
-                    </Button>
-                  </Link>
-                </div>
+  <AlertDialog>
+    <AlertDialogTrigger asChild>
+      <Button
+        type="button"
+        className="w-full h-10 font-bold uppercase tracking-tight text-sm bg-accent hover:bg-accent/80 text-accent-foreground px-2"
+      >
+        VIEW SONG CATALOG ↗
+      </Button>
+    </AlertDialogTrigger>
+
+    <AlertDialogContent>
+      <AlertDialogHeader>
+        <AlertDialogTitle>Leaving Song Entry</AlertDialogTitle>
+        <AlertDialogDescription>
+          You’re about to open the KaraFun song catalog in a new tab.
+          <br /><br />
+          After choosing your song, please return to this submission form
+          to enter the song details and complete your request.
+        </AlertDialogDescription>
+      </AlertDialogHeader>
+
+      <AlertDialogFooter>
+        <AlertDialogCancel>Stay Here</AlertDialogCancel>
+
+        <AlertDialogAction
+          onClick={() =>
+            window.open(
+              "https://www.karafun.com/karaoke/playlist/",
+              "_blank"
+            )
+          }
+        >
+          Open Song Catalog
+        </AlertDialogAction>
+      </AlertDialogFooter>
+    </AlertDialogContent>
+  </AlertDialog>
+</div>
               </div>
             </div>
 
