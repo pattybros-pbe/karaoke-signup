@@ -137,9 +137,9 @@ function SingerPageContent() {
 
   if (submitted) {
     return (
-      <div className="flex min-h-screen flex-col items-center justify-center p-6 bg-background text-center animate-in fade-in zoom-in duration-300">
-        <CheckCircle2 className="h-20 w-20 text-accent mb-6" />
-        <h1 className="text-3xl font-bold mb-4 font-headline uppercase">Request Received!</h1>
+      <div className="flex min-h-screen flex-col items-center justify-center p-4 sm:p-6 bg-background text-center animate-in fade-in zoom-in duration-300">
+        <CheckCircle2 className="h-14 w-14 sm:h-20 sm:w-20 text-accent mb-4 sm:mb-6" />
+        <h1 className="text-2xl sm:text-3xl font-bold mb-3 sm:mb-4 font-headline uppercase">Request Received!</h1>
         <p className="text-lg text-muted-foreground mb-8">
           Thank you for your submission. Get ready to rock the stage!
         </p>
@@ -152,7 +152,7 @@ function SingerPageContent() {
 
   return (
     <div className="min-h-screen bg-background relative">
-      <header className="bg-black text-white px-6 py-12 border-b-4 border-accent relative flex flex-col items-center justify-center text-center">
+      <header className="bg-black text-white px-4 py-6 sm:px-6 sm:py-12 border-b-4 border-accent relative flex flex-col items-center justify-center text-center">
         <div className="absolute top-4 right-4">
           <ThemeToggle />
         </div>
@@ -160,7 +160,7 @@ function SingerPageContent() {
         <div className="flex flex-col items-center max-w-2xl w-full">
           <div className="flex items-center gap-4 justify-center">
             {logo && (
-              <div className="relative h-20 w-20 shrink-0">
+              <div className="relative h-14 w-14 sm:h-20 sm:w-20 shrink-0">
                 <Image 
                   src={logo.imageUrl} 
                   alt="App Logo" 
@@ -172,8 +172,8 @@ function SingerPageContent() {
             )}
             
             <div className="flex flex-col items-start text-left">
-              <h1 className="text-5xl font-black font-headline uppercase leading-none tracking-tighter text-white">KARAOKE</h1>
-              <h1 className="text-2xl font-black font-headline uppercase leading-none tracking-tighter text-accent mt-0.5">
+              <h1 className="text-3xl sm:text-5xl font-black font-headline uppercase leading-tight tracking-tighter text-white">KARAOKE</h1>
+              <h1 className="text-lg sm:text-2xl font-black font-headline uppercase leading-tight tracking-tighter text-accent mt-0.5">
                 SIGN-UP&nbsp;&nbsp;FORM
               </h1>
             </div>
